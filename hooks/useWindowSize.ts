@@ -13,11 +13,20 @@ export type useWindowSizeResult = {
  * @returns Returns an object containing booleans for each window size.
  */
 export const useWindowSize = (): useWindowSizeResult => {
-  const smallQuery = window.matchMedia("(min-width: 640px)");
-  const mediumQuery = window.matchMedia("(min-width: 768px)");
-  const largeQuery = window.matchMedia("(min-width: 896px)");
-  const XLargeQuery = window.matchMedia("(min-width: 1024px)");
-  const XXLargeQuery = window.matchMedia("(min-width: 1280px)");
+  const smallQuery = useMemo(() => window.matchMedia("(min-width: 640px)"), []);
+  const mediumQuery = useMemo(
+    () => window.matchMedia("(min-width: 768px)"),
+    [],
+  );
+  const largeQuery = useMemo(() => window.matchMedia("(min-width: 896px)"), []);
+  const XLargeQuery = useMemo(
+    () => window.matchMedia("(min-width: 1024px)"),
+    [],
+  );
+  const XXLargeQuery = useMemo(
+    () => window.matchMedia("(min-width: 1280px)"),
+    [],
+  );
 
   const [isSmall, setIsSmall] = useState(smallQuery.matches);
   const [isMedium, setIsMedium] = useState(mediumQuery.matches);
@@ -68,8 +77,5 @@ export const useWindowSize = (): useWindowSizeResult => {
     handleXXLargeChange,
   ]);
 
-  return useMemo(
-    () => ({ isSmall, isMedium, isLarge, isXLarge, isXXLarge } as const),
-    [isSmall, isMedium, isLarge, isXLarge, isXXLarge]
-  );
+  return { isSmall, isMedium, isLarge, isXLarge, isXXLarge } as const;
 };
