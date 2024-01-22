@@ -20,3 +20,22 @@ function App() {
   }, [isSmall, isLarge]);
 }
 ```
+
+## useAutoFocus usage
+Requires `@mantine/hooks` package.
+Useful when you want to auto focus an element when it enters the viewport.
+For example, in a dropdown with a search field.
+
+```tsx
+import { useMemo } from "react";
+import { useScreenSize } from "path/to/hook/useAutoFocus";
+
+
+function App() {
+  // object destruct the window size boolean states you are interested in
+  const { ref, inViewport } = useAutoFocus();
+
+  // pass ref to component/element that needs auto focus when visible
+  return (<input ref={ref} />)
+}
+```
