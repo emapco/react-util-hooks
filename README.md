@@ -22,9 +22,8 @@ function App() {
 ```
 
 ## useAutoFocus usage
-Requires `@mantine/hooks` package.
 Useful when you want to auto focus an element when it enters the viewport.
-For example, in a dropdown with a search field.
+For example, to auto focus a search field when a dropdown is toggled open.
 
 ```tsx
 import { useMemo } from "react";
