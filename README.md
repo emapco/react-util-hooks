@@ -27,7 +27,7 @@ For example, to auto focus a search field when a dropdown is toggled open.
 
 ```tsx
 import { useMemo } from "react";
-import { useScreenSize } from "path/to/hook/useAutoFocus";
+import { useAutoFocus } from "path/to/hook/useAutoFocus";
 
 
 function App() {
